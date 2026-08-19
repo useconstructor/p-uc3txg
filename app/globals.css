@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f0e8;
+  --foreground: #2c1810;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: #f5f0e8;
+  --color-espresso: #2c1810;
+  --color-roast: #4a2c2a;
+  --color-rust: #8b4513;
+  --color-caramel: #d4a574;
+  --font-sans: var(--font-lato);
+  --font-display: var(--font-playfair);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-lato), sans-serif; }
+::selection { background: #d4a574; color: #2c1810; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.font-display { font-family: var(--font-playfair), Georgia, serif; }
+.eyebrow { display: flex; align-items: center; gap: 0.85rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: #8b4513; }
+.eyebrow::before { content: ""; width: 2.25rem; height: 1px; background: currentColor; }
+.detail-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #8b4513; }
+.nav-link { position: relative; padding-block: 0.5rem; color: rgb(245 240 232 / 0.72); transition: color 180ms ease; }
+.nav-link:hover { color: #f5f0e8; }
+.nav-link::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: #d4a574; transition: right 180ms ease; }
+.nav-link:hover::after { right: 0; }
+.hero-shade { background: linear-gradient(90deg, rgba(30, 14, 8, .94) 0%, rgba(44, 24, 16, .76) 42%, rgba(44, 24, 16, .16) 82%), linear-gradient(0deg, rgba(28, 14, 9, .6), transparent 55%); }
+.noise { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E"); mix-blend-mode: soft-light; pointer-events: none; }
+.map-grid { background-image: linear-gradient(rgba(44,24,16,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(44,24,16,.12) 1px, transparent 1px); background-size: 52px 52px; transform: rotate(-8deg) scale(1.2); }
+
+@media (max-width: 767px) {
+  .hero-shade { background: linear-gradient(90deg, rgba(30,14,8,.92), rgba(44,24,16,.5)), linear-gradient(0deg, rgba(28,14,9,.72), transparent 60%); }
 }
